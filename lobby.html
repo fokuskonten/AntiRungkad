@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#06070A">
+  <title>Lobi Utama Game Arcade — AntiRungkad</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./src/styles/lobby.css">
+</head>
+<body class="olympus-page">
+  <div class="page-container">
+    <!-- Top Header Bar -->
+    <header class="lobby-header-bar">
+      <span class="lobby-brand-title">ANTIRUNGKAD</span>
+      <div class="lobby-user-quick-bal">
+        <button type="button" class="btn-global-bgm-toggle" id="btn-global-bgm-toggle" title="Musik (ON/OFF)">
+          <span class="bgm-btn-icon">▶</span>
+          <span class="bgm-btn-text">MUSIK</span>
+        </button>
+        <div class="quick-bal-badge">
+          <span class="quick-bal-curr">Rp</span>
+          <span class="quick-bal-val" id="view-lobby-balance">1.000.000</span>
+        </div>
+        <a href="./deposit.html" class="btn-header-back" style="background: rgba(255, 215, 0, 0.2); border-color: #FFD700; color: #FFD700;">+ CLAIM COIN</a>
+      </div>
+    </header>
+
+    <!-- Running Announcement Ticker -->
+    <div class="lobby-running-ticker">
+      <span class="ticker-icon-badge">📢 INFO:</span>
+      <div class="ticker-marquee">
+        🔥 Selamat kepada Player_99 baru saja meraih Skor Tertinggi 15.450.000 Koin di Gates of Olympus Arcade! • Event Combo 500X sedang berlangsung • Game Simulasi WebGL Kasual Bebas Uang Sungguhan!
+      </div>
+    </div>
+
+    <!-- Hero Banner Slider -->
+    <section class="lobby-hero-slider" style="background: linear-gradient(135deg, #2e1065 0%, #0f172a 100%);">
+      <div class="slider-slide-item">
+        <div class="slide-content-overlay">
+          <span class="slide-tag">EVENT UNGGULAN</span>
+          <h2 class="slide-heading">GATES OF OLYMPUS PRO</h2>
+          <a href="./game.html" class="btn-slide-action">MAIN SEKARANG →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Game Catalog Section -->
+    <section class="olympus-card">
+      <h2 class="card-section-title">
+        <span>🎮</span> KATALOG PERMAINAN POPULER
+      </h2>
+      <div class="game-catalog-grid">
+        <!-- Featured Slot: Olympus (AntiRungkad) -->
+        <a href="./game.html" class="game-item-card featured-main">
+          <div class="game-thumb-box">
+            <span class="game-hot-badge">HOT 98.6%</span>
+            <span class="game-icon-large">⚡</span>
+          </div>
+          <div class="game-meta-box">
+            <span class="game-name-title">GATES OF OLYMPUS</span>
+            <span class="game-provider-tag">AntiRungkad Pure Engine</span>
+            <span class="btn-play-game">MAIN SEKARANG</span>
+          </div>
+        </a>
+
+        <!-- Game 2: Sweet Bonanza -->
+        <a href="./game.html" class="game-item-card">
+          <div class="game-thumb-box">
+            <span class="game-icon-large">🍬</span>
+          </div>
+          <div class="game-meta-box">
+            <span class="game-name-title">SWEET BONANZA</span>
+            <span class="game-provider-tag">Score 97.4% • Arcade Simulator</span>
+          </div>
+        </a>
+
+        <!-- Game 3: Mahjong Ways -->
+        <a href="./game.html" class="game-item-card">
+          <div class="game-thumb-box">
+            <span class="game-icon-large">🀄</span>
+          </div>
+          <div class="game-meta-box">
+            <span class="game-name-title">MAHJONG WAYS 2</span>
+            <span class="game-provider-tag">RTP 96.8% • Multiplier</span>
+          </div>
+        </a>
+
+        <!-- Game 4: Roulette VIP -->
+        <a href="./game.html" class="game-item-card">
+          <div class="game-thumb-box">
+            <span class="game-icon-large">🎡</span>
+          </div>
+          <div class="game-meta-box">
+            <span class="game-name-title">ROULETTE ROYALE</span>
+            <span class="game-provider-tag">Live Casino • 24 Jam</span>
+          </div>
+        </a>
+
+        <!-- Game 5: Domino QiuQiu -->
+        <a href="./game.html" class="game-item-card">
+          <div class="game-thumb-box">
+            <span class="game-icon-large">🎴</span>
+          </div>
+          <div class="game-meta-box">
+            <span class="game-name-title">DOMINO QIUQIU</span>
+            <span class="game-provider-tag">Multiplayer Card Game</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Sportsbook & Pertandingan Bola Live -->
+    <section class="olympus-card">
+      <h2 class="card-section-title">
+        <span>⚽</span> JADWAL & SKOR BOLA TERKINI
+      </h2>
+      <div class="sports-match-list">
+        <div class="match-item-card">
+          <div>
+            <div class="match-league-tag">UEFA CHAMPIONS LEAGUE</div>
+            <div class="match-teams">Real Madrid vs Manchester City</div>
+            <span class="match-time-tag">Malam Ini • 02:00 WIB</span>
+          </div>
+          <span class="match-score-badge">LIVE 2 - 1</span>
+        </div>
+
+        <div class="match-item-card">
+          <div>
+            <div class="match-league-tag">ENGLISH PREMIER LEAGUE</div>
+            <div class="match-teams">Arsenal vs Liverpool</div>
+            <span class="match-time-tag">Besok • 22:30 WIB</span>
+          </div>
+          <span class="match-score-badge" style="background: #3B82F6;">VS (1.85)</span>
+        </div>
+
+        <div class="match-item-card">
+          <div>
+            <div class="match-league-tag">SERIE A ITALIA</div>
+            <div class="match-teams">Inter Milan vs Juventus</div>
+            <span class="match-time-tag">Minggu • 01:45 WIB</span>
+          </div>
+          <span class="match-score-badge" style="background: #3B82F6;">VS (2.10)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Informasi Berita & Tips Hoki -->
+    <section class="olympus-card">
+      <h2 class="card-section-title">
+        <span>📰</span> BERITA & PENGUMUMAN RESMI
+      </h2>
+      <div class="news-list-grid">
+        <div class="news-item-card">
+          <span class="news-date-text">31 AGUSTUS 2026 • TIPS ARCADE</span>
+          <p class="news-headline-text">Panduan Pola Kombinasi Simbol Pecah Petir Olympus di Simulator WebGL FokusKonten.</p>
+        </div>
+        <div class="news-item-card">
+          <span class="news-date-text">30 AGUSTUS 2026 • UPDATE SISTEM</span>
+          <p class="news-headline-text">Upgrade Web Audio API Zero-Latency & Integrasi Dompet Instan Bebas Gangguan Telah Selesai.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5-CTA Bottom Docked Navigation -->
+    <nav class="bottom-nav-dock">
+      <a href="./lobby.html" class="nav-cta-item active" id="nav-btn-lobby">
+        <img src="./assets/icons/nav_lobby.png" alt="Lobby" class="nav-cta-img-icon" />
+        <span class="nav-cta-label">LOBBY</span>
+      </a>
+      <a href="./deposit.html" class="nav-cta-item" id="nav-btn-deposit">
+        <img src="./assets/icons/nav_deposit.png" alt="Koin Virtual" class="nav-cta-img-icon" />
+        <span class="nav-cta-label">KOIN</span>
+      </a>
+      <a href="./game.html" class="nav-cta-item center-spin-btn" id="nav-btn-spin">
+        <img src="./assets/icons/nav_spin.png" alt="Spin" class="center-spin-img" />
+        <span class="center-spin-label">SPIN</span>
+      </a>
+      <a href="./promo.html" class="nav-cta-item" id="nav-btn-promo">
+        <img src="./assets/icons/nav_promo.png" alt="Promo" class="nav-cta-img-icon" />
+        <span class="nav-cta-label">PROMO</span>
+      </a>
+      <a href="./account.html" class="nav-cta-item" id="nav-btn-account">
+        <img src="./assets/icons/nav_account.png" alt="Akun" class="nav-cta-img-avatar" />
+        <span class="nav-cta-label">AKUN</span>
+      </a>
+    </nav>
+  </div>
+
+  <script type="module" src="./src/lobby.js"></script>
+</body>
+</html>

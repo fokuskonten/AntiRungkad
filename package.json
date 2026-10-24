@@ -1,0 +1,19 @@
+{
+  "name": "antirungkad-webgl",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 5174 --host",
+    "build": "vite build",
+    "preview": "vite preview --port 5174"
+  },
+  "dependencies": {
+    "canvas-confetti": "^1.9.4",
+    "lucide": "^0.475.0",
+    "three": "^0.174.0"
+  },
+  "devDependencies": {
+    "vite": "^6.2.0"
+  }
+}

@@ -1,0 +1,183 @@
+@import "./tokens.css";
+@import "./bottom-nav.css";
+@import "./stone-frame.css";
+@import "./hud-scoreboard.css";
+@import "./deposit-dialog.css";
+@import "./account-dialog.css";
+
+/* ── DASHBOARD BACKGROUND & CANVAS ── */
+body.dashboard-canvas {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: #120d18;
+  color: var(--text-main);
+  font-family: var(--font-main);
+  overflow-x: hidden;
+}
+
+/* Background layer for dashboard */
+body.dashboard-canvas::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/assets/olympus_bg.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: -1;
+  opacity: 0.7;
+}
+
+/* Fallback background div */
+.dashboard-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/assets/olympus_bg.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: -2;
+  opacity: 0.6;
+}
+
+#particles-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+#dashboard-root {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 68px 8px 90px 8px; /* Breathing room for fixed top header and bottom nav */
+  box-sizing: border-box;
+}
+
+/* ── MAIN CENTRAL GAME STAGE (BALANCED GROUPING) ── */
+.slot-stage-arena {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto 0;
+  gap: 14px;
+}
+
+/* ── 3-BUTTON FEATURE STRIP (BELI FITUR, DOUBLE CHANCE, TURBO) ── */
+.slot-feature-strip {
+  width: 100%;
+  max-width: 410px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 8px;
+  margin: 0 auto;
+  padding: 0 4px;
+  box-sizing: border-box;
+}
+
+.btn-strip-card {
+  background: linear-gradient(180deg, rgba(35, 14, 58, 0.94) 0%, rgba(16, 6, 28, 0.98) 100%);
+  border: 1.5px solid rgba(255, 215, 0, 0.45);
+  border-radius: 10px;
+  padding: 8px 6px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  transition: all 0.18s ease;
+  min-height: 52px;
+  box-sizing: border-box;
+}
+
+.btn-strip-card:active {
+  transform: scale(0.96);
+  border-color: #FFD700;
+}
+
+/* 1. Beli Fitur Card */
+.btn-strip-card.btn-strip-buy {
+  background: linear-gradient(180deg, rgba(70, 35, 8, 0.95) 0%, rgba(32, 14, 3, 0.98) 100%);
+  border-color: #FFD700;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.25);
+}
+
+.strip-label {
+  font-family: var(--font-title, 'Cinzel', serif);
+  font-size: 9.5px;
+  font-weight: 800;
+  color: #FFD700;
+  letter-spacing: 0.4px;
+}
+
+.strip-val {
+  font-size: 12px;
+  font-weight: 800;
+  color: #FFF0A8;
+  font-family: var(--font-main);
+}
+
+.strip-status {
+  font-size: 10.5px;
+  font-weight: 900;
+  color: #CBD5E1;
+  letter-spacing: 0.5px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2px 10px;
+  border-radius: 4px;
+}
+
+/* Active State for Double Chance */
+.btn-strip-card.btn-strip-dc.active {
+  background: linear-gradient(180deg, #059669 0%, #047857 100%);
+  border-color: #34D399;
+  box-shadow: 0 0 12px rgba(52, 211, 153, 0.4);
+}
+
+.btn-strip-card.btn-strip-dc.active .strip-status {
+  color: #FFFFFF;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+/* Active State for Turbo */
+.btn-strip-card.btn-strip-turbo.active {
+  background: linear-gradient(180deg, #D97706 0%, #B45309 100%);
+  border-color: #FBBF24;
+  box-shadow: 0 0 12px rgba(251, 191, 36, 0.4);
+}
+
+.btn-strip-card.btn-strip-turbo.active .strip-status {
+  color: #FFFFFF;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+
+

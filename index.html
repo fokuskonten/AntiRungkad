@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#08090C">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="./manifest.json">
+  <title>AntiRungkad — WebGL Slot Arcade & 60FPS Game Simulator Resmi FokusKonten</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./src/styles/style.css">
+</head>
+<body>
+  <!-- Floating Gold Dust Particle Canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Running Announcement Ticker -->
+  <div class="running-ticker">
+    <div class="ticker-content">
+      <span class="ticker-item"><span class="ticker-highlight">SELAMAT DATANG DI ANTIRUNGKAD:</span> GAME SIMULASI WEBGL KASUAL RESMI FOKUSKONTEN</span>
+      <span class="ticker-item"><span class="ticker-highlight">VIRTUAL CREDITS:</span> 10.000 KOIN GRATIS | <span class="ticker-highlight">SIMULASI 60 FPS:</span> THREE.JS + PHASER | <span class="ticker-highlight">LEVEL SPIN:</span> 400 KOIN</span>
+      <span class="ticker-item"><span class="ticker-highlight">GAME SIMULASI KASUAL:</span> 100% KOIN VIRTUAL HIBURAN & DEMO REKAYASA ENGINE GRAFIS WEBGL</span>
+      <span class="ticker-item"><span class="ticker-highlight">SERVER MASTER FOKUSKONTEN:</span> ENKRIPSI KEAMANAN TINGGI & PROVABLY FAIR 100% ONLINE</span>
+    </div>
+  </div>
+
+  <div id="main-wrapper">
+    <!-- Header Navigation -->
+    <header class="header-nav">
+      <a href="#" class="brand-logo">
+        <span class="brand-logo-text">ANTIRUNGKAD</span>
+      </a>
+      <div class="header-right-actions">
+        <button class="btn-audio-toggle" id="btn-audio-toggle" title="Putar / Hentikan Musik">
+          <span class="audio-icon" id="audio-icon">▶</span>
+          <span id="audio-text">MUSIK</span>
+        </button>
+        <a href="#" class="header-livechat-link" id="nav-livechat">Livechat 24 Jam</a>
+      </div>
+    </header>
+
+    <!-- Background Audio Element -->
+    <audio id="bgm-player" src="./assets/bgm.webm" loop preload="auto"></audio>
+
+    <!-- Hero Showcase & Login/Register Portal -->
+    <main class="hero-grid">
+      <!-- Left: Luxury Hero Banner Slider Card -->
+      <div class="banner-card">
+        <div class="slider-wrapper" id="hero-slider">
+          <div class="slider-track" id="slider-track">
+            <div class="slider-slide">
+              <img src="./assets/banner_1.png" alt="AntiRungkad Arcade 1" class="banner-img">
+            </div>
+            <div class="slider-slide">
+              <img src="./assets/banner_2.png" alt="AntiRungkad Arcade 2" class="banner-img">
+            </div>
+            <div class="slider-slide">
+              <img src="./assets/hero_banner.png" alt="AntiRungkad Arcade 3" class="banner-img">
+            </div>
+          </div>
+          <div class="slider-dots" id="slider-dots">
+            <button class="slider-dot active" data-index="0" aria-label="Slide 1"></button>
+            <button class="slider-dot" data-index="1" aria-label="Slide 2"></button>
+            <button class="slider-dot" data-index="2" aria-label="Slide 3"></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Interactive Auth Portal -->
+      <div class="auth-portal-card">
+        <div class="tab-switcher">
+          <button class="tab-btn active" id="tab-login-btn">MASUK</button>
+          <button class="tab-btn" id="tab-register-btn">DAFTAR</button>
+        </div>
+
+        <!-- 1. LOGIN FORM -->
+        <form class="auth-form" id="form-login">
+          <div class="form-group">
+            <label class="form-label" for="login-username">Username</label>
+            <input type="text" id="login-username" class="form-input" placeholder="Username" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="login-password">Password</label>
+            <input type="password" id="login-password" class="form-input" placeholder="Password" required>
+          </div>
+
+          <div id="login-feedback" style="font-size: 13px; min-height: 18px; font-weight: 600;"></div>
+
+          <button type="submit" class="btn-auth-submit" id="btn-submit-login">MASUK</button>
+
+          <!-- Development Bypass -->
+          <button type="button" class="btn-auth-submit" id="btn-skip-login" style="background: #374151; margin-top: 10px;">⚡ SKIP LOGIN (DEV MODE)</button>
+
+          <div class="auth-help-links">
+            <a href="#" id="link-forgot-pass">Lupa Password?</a>
+            <a href="#" id="link-livechat-help">Livechat 24 Jam</a>
+          </div>
+        </form>
+
+        <!-- 2. REGISTER FORM -->
+        <form class="auth-form" id="form-register" style="display: none;">
+          <div class="form-group">
+            <label class="form-label" for="reg-username">Username</label>
+            <input type="text" id="reg-username" class="form-input" placeholder="Username" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-whatsapp">WhatsApp</label>
+            <input type="tel" id="reg-whatsapp" class="form-input" placeholder="WhatsApp (08xxxxxxxx)" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-bank">Bank / E-Wallet</label>
+            <select id="reg-bank" class="form-input" style="background: rgba(6, 7, 11, 0.85); color: #FFF;" required>
+              <option value="BCA" style="background: #08090C;">BCA</option>
+              <option value="MANDIRI" style="background: #08090C;">MANDIRI</option>
+              <option value="BRI" style="background: #08090C;">BRI</option>
+              <option value="BNI" style="background: #08090C;">BNI</option>
+              <option value="QRIS" style="background: #08090C;">QRIS</option>
+              <option value="DANA" style="background: #08090C;">DANA</option>
+              <option value="OVO" style="background: #08090C;">OVO</option>
+              <option value="GOPAY" style="background: #08090C;">GOPAY</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-acc-name">Nama Pemilik Rekening</label>
+            <input type="text" id="reg-acc-name" class="form-input" placeholder="Nama Pemilik Rekening" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-acc-number">Nomor Rekening / No. HP E-Wallet</label>
+            <input type="text" id="reg-acc-number" class="form-input" placeholder="Nomor Rekening / E-Wallet" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-password">Password</label>
+            <input type="password" id="reg-password" class="form-input" placeholder="Password" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-repassword">Ulangi Password</label>
+            <input type="password" id="reg-repassword" class="form-input" placeholder="Ulangi Password" required>
+          </div>
+
+          <div id="register-feedback" style="font-size: 13px; min-height: 18px; font-weight: 600;"></div>
+
+          <button type="submit" class="btn-auth-submit" id="btn-submit-register">DAFTAR</button>
+        </form>
+      </div>
+    </main>
+
+    <!-- Progressive Jackpot Banner -->
+    <section class="jackpot-banner">
+      <div class="jackpot-title">TOTAL PROGRESSIVE JACKPOT</div>
+      <div class="jackpot-counter" id="jackpot-display">IDR 8.842.619.450</div>
+      <div style="font-size: 12px; color: #9CA3AF; margin-top: 4px; letter-spacing: 0.5px;">Livechat 24 Jam & Penarikan Cepat Terpercaya</div>
+    </section>
+
+    <!-- Footer & Payment Badges -->
+    <footer class="footer-section">
+      <div class="bank-badges">
+        <span class="bank-pill">BCA</span>
+        <span class="bank-pill">MANDIRI</span>
+        <span class="bank-pill">BRI</span>
+        <span class="bank-pill">BNI</span>
+        <span class="bank-pill">QRIS</span>
+        <span class="bank-pill">DANA</span>
+        <span class="bank-pill">OVO</span>
+        <span class="bank-pill">GOPAY</span>
+      </div>
+      <div>&copy; 2026 AntiRungkad Arcade. Game Kasual & Demo Grafis WebGL — 100% Koin Virtual Bebas Taruhan.</div>
+    </footer>
+  </div>
+
+  <!-- Welcome Promotional Modal with Music CTA -->
+  <div class="promo-modal-backdrop" id="promo-modal">
+    <div class="promo-modal-card">
+      <button class="promo-close-btn" id="btn-promo-close" aria-label="Tutup">✕</button>
+      
+      <div class="promo-badge">PROMOSI EKSKLUSIF 2026</div>
+      <h2 class="promo-title">BONUS NEW MEMBER 100%</h2>
+      <p class="promo-subtitle">GARANSI KEKALAHAN 100% & BONUS JACKPOT HARIAN</p>
+      
+      <div class="promo-perks-grid">
+        <div class="promo-perk-item">
+          <div class="promo-perk-label">BONUS KOIN</div>
+          <div class="promo-perk-value">RP 10.000</div>
+        </div>
+        <div class="promo-perk-item">
+          <div class="promo-perk-label">BONUS MAX</div>
+          <div class="promo-perk-value">RP 1.000.000</div>
+        </div>
+        <div class="promo-perk-item">
+          <div class="promo-perk-label">PROSES WD</div>
+          <div class="promo-perk-value">1 MENIT</div>
+        </div>
+      </div>
+
+      <p class="promo-highlight-text">
+        Nikmati pengalaman bermain terbaik dengan sound rock metal berdaya tinggi dan sistem terpercaya.
+      </p>
+
+      <div class="promo-action-buttons">
+        <button class="btn-promo-music-cta" id="btn-promo-music">
+          PLAY MUSIK DULU GA SIH
+        </button>
+        <button class="btn-promo-skip" id="btn-promo-skip">
+          Lanjut Tanpa Musik
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

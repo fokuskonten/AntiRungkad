@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#06070A">
+  <title>Pusat Bonus Koin & Hadiah Game — AntiRungkad</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./src/styles/promo.css">
+</head>
+<body class="olympus-page">
+  <div class="page-container">
+    <!-- Top Header -->
+    <header class="page-top-header">
+      <a href="./lobby.html" class="btn-header-back">
+        <span>←</span> LOBI
+      </a>
+      <h1 class="page-header-title">PROMOSI & EVENT</h1>
+      <button type="button" class="btn-global-bgm-toggle" id="btn-global-bgm-toggle" title="Musik (ON/OFF)">
+        <span class="bgm-btn-icon">▶</span>
+        <span class="bgm-btn-text">MUSIK</span>
+      </button>
+    </header>
+
+    <!-- Category Filter Bar -->
+    <div class="promo-category-bar">
+      <button type="button" class="btn-filter-pill active" data-cat="ALL">SEMUA PROMO</button>
+      <button type="button" class="btn-filter-pill" data-cat="NEW">MEMBER BARU</button>
+      <button type="button" class="btn-filter-pill" data-cat="SLOT">EVENT SLOT</button>
+      <button type="button" class="btn-filter-pill" data-cat="CASHBACK">CASHBACK</button>
+      <button type="button" class="btn-filter-pill" data-cat="VIP">REWARD VIP</button>
+    </div>
+
+    <!-- Promo Cards Grid -->
+    <div class="promo-grid" id="promo-list-container">
+      <!-- Injected via promo.js -->
+    </div>
+
+    <!-- 5-CTA Bottom Docked Navigation -->
+    <nav class="bottom-nav-dock">
+      <a href="./lobby.html" class="nav-cta-item" id="nav-btn-lobby">
+        <img src="./assets/icons/nav_lobby.png" alt="Lobby" class="nav-cta-img-icon" />
+        <span class="nav-cta-label">LOBBY</span>
+      </a>
+      <a href="./deposit.html" class="nav-cta-item" id="nav-btn-deposit">
+        <img src="./assets/icons/nav_deposit.png" alt="Koin Virtual" class="nav-cta-img-icon" />
+        <span class="nav-cta-label">KOIN</span>
+      </a>
+      <a href="./game.html" class="nav-cta-item center-spin-btn" id="nav-btn-spin">
+        <img src="./assets/icons/nav_spin.png" alt="Spin" class="center-spin-img" />
+        <span class="center-spin-label">SPIN</span>
+      </a>
+      <a href="./promo.html" class="nav-cta-item active" id="nav-btn-promo">
+        <img src="./assets/icons/nav_promo.png" alt="Promo" class="nav-cta-img-icon" />
+        <span class="nav-cta-label">PROMO</span>
+      </a>
+      <a href="./account.html" class="nav-cta-item" id="nav-btn-account">
+        <img src="./assets/icons/nav_account.png" alt="Akun" class="nav-cta-img-avatar" />
+        <span class="nav-cta-label">AKUN</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- Global Toast Notification Element -->
+  <div id="olympus-toast">Notifikasi berhasil!</div>
+
+  <script type="module" src="./src/promo.js"></script>
+</body>
+</html>

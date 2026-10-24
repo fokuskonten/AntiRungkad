@@ -1,0 +1,176 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   account.css — Full Account & Profile Management Page Styles
+   FokusKonten Pro — AntiRungkad Ecosystem
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+@import "./shared-page.css";
+
+/* Profile Header Card */
+.profile-overview-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.profile-avatar-box {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 2px solid #FFD700;
+  box-shadow: 0 0 14px rgba(255, 215, 0, 0.45);
+  background: radial-gradient(circle, #4c1d95 0%, #17072b 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.profile-avatar-box img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.profile-meta-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-align: left;
+}
+
+.profile-title-name {
+  font-family: var(--font-title, 'Cinzel', serif);
+  font-size: 16px;
+  font-weight: 800;
+  color: #FFF8B0;
+}
+
+.profile-uid-text {
+  font-size: 11px;
+  color: #94A3B8;
+}
+
+.profile-vip-pill {
+  align-self: flex-start;
+  margin-top: 2px;
+  background: linear-gradient(90deg, #F59E0B, #D97706);
+  color: #FFFFFF;
+  font-size: 9px;
+  font-weight: 900;
+  padding: 2px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   Account Menu List Container & Items
+   ══════════════════════════════════════════════════════════════════════════════ */
+.account-menu-card {
+  padding: 4px 0 !important;
+  display: flex;
+  flex-direction: column;
+  background: rgba(18, 7, 32, 0.92);
+  border: 1.5px solid rgba(255, 215, 0, 0.35);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+}
+
+.account-menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  text-decoration: none;
+  color: #FFFFFF;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.account-menu-item:last-child {
+  border-bottom: none;
+}
+
+.account-menu-item:hover,
+.account-menu-item:active {
+  background: rgba(255, 215, 0, 0.08);
+}
+
+.account-menu-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.account-menu-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #3d1b64 0%, #1f0b36 100%);
+  border: 1px solid rgba(255, 215, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  color: #FFD700;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  flex-shrink: 0;
+}
+
+.account-menu-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+}
+
+.account-menu-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #FFF8B0;
+  letter-spacing: 0.3px;
+}
+
+.account-menu-desc {
+  font-size: 11px;
+  color: #94A3B8;
+}
+
+.account-menu-arrow {
+  font-size: 18px;
+  color: #FFD700;
+  font-weight: 800;
+  opacity: 0.75;
+  transition: transform 0.2s ease;
+}
+
+.account-menu-item:hover .account-menu-arrow {
+  opacity: 1;
+  transform: translateX(3px);
+}
+
+.account-menu-item.is-logout {
+  border-top: 1px solid rgba(239, 68, 68, 0.25);
+  background: rgba(40, 10, 20, 0.35);
+}
+
+.account-menu-item.is-logout .account-menu-icon {
+  background: linear-gradient(135deg, #450a0a 0%, #200404 100%);
+  border-color: rgba(248, 113, 113, 0.4);
+  color: #F87171;
+}
+
+.account-menu-item.is-logout .account-menu-title {
+  color: #FCA5A5;
+}
+
+.account-menu-item.is-logout .account-menu-desc {
+  color: #EF4444;
+}
+
+.account-menu-item.is-logout .account-menu-arrow {
+  color: #F87171;
+}

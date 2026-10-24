@@ -1,0 +1,319 @@
+@import "./tokens.css";
+@import "./bottom-nav.css";
+@import "./stone-frame.css";
+@import "./hud-scoreboard.css";
+@import "./deposit-dialog.css";
+@import "./account-dialog.css";
+
+/* ── GAME CANVAS & OLYMPUS BACKGROUND ── */
+body.game-page-canvas {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: #120d18;
+  color: var(--text-main);
+  font-family: var(--font-main);
+  overflow-x: hidden;
+}
+
+/* ── MASTER LIVE CINEMATIC VIDEO BACKGROUND (100% Solid, Full Frame) ── */
+.game-live-video-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  z-index: -2;
+  overflow: hidden;
+  pointer-events: none;
+  background-color: #0b0614;
+}
+
+.game-video-bg-stream {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  pointer-events: none;
+  opacity: 1;
+}
+
+#particles-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* ── FLOATING LUXURY MUSIC TOGGLE BUTTON ── */
+.btn-game-music-toggle {
+  position: fixed;
+  top: 122px;
+  right: calc(50% - 200px);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(35, 14, 58, 0.94) 0%, rgba(12, 5, 22, 0.98) 100%);
+  border: 1.5px solid #FFD700;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8), 0 0 16px rgba(255, 215, 0, 0.55), inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 100;
+  padding: 0;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+}
+
+@media (max-width: 440px) {
+  .btn-game-music-toggle {
+    right: 14px;
+  }
+}
+
+.btn-game-music-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 22px rgba(255, 215, 0, 0.85);
+}
+
+.btn-game-music-toggle:active {
+  transform: scale(0.92);
+}
+
+.btn-game-music-toggle.muted {
+  border-color: rgba(255, 215, 0, 0.35);
+  opacity: 0.6;
+}
+
+.btn-game-music-toggle.muted .music-note-icon {
+  stroke: #94A3B8;
+}
+
+.btn-game-music-toggle.muted .music-note-icon circle {
+  fill: #94A3B8;
+}
+
+.btn-game-music-toggle.muted .music-sound-waves {
+  display: none;
+}
+
+.music-sound-waves {
+  position: absolute;
+  right: -2px;
+  top: -2px;
+  display: flex;
+  align-items: flex-end;
+  gap: 1.5px;
+  height: 9px;
+  pointer-events: none;
+}
+
+.music-sound-waves .wave {
+  width: 2px;
+  background: #FFD700;
+  border-radius: 1px;
+  animation: waveBar 0.8s ease-in-out infinite alternate;
+}
+
+.music-sound-waves .w1 { height: 4px; animation-delay: 0.1s; }
+.music-sound-waves .w2 { height: 8px; animation-delay: 0.3s; }
+.music-sound-waves .w3 { height: 5px; animation-delay: 0.2s; }
+
+@keyframes waveBar {
+  0% { transform: scaleY(0.4); }
+  100% { transform: scaleY(1.2); }
+}
+
+/* ── PURE DECOUPLED GAME ARENA STAGE ── */
+.game-arena-stage {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 96px 8px 90px 8px;
+  box-sizing: border-box;
+  gap: 14px;
+}
+
+/* ── FULL-FRAME WINNING ZEUS OVERLAY LAYER ── */
+.zeus-win-fullscreen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 60; /* Muncul di atas arena saat menang */
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.zeus-win-fullscreen-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.zeus-win-fullscreen-canvas {
+  width: 100%;
+  max-width: 480px;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  filter: drop-shadow(0 0 35px rgba(255, 215, 0, 0.95)) drop-shadow(0 0 55px rgba(59, 130, 246, 0.85));
+}
+
+/* ── CLOUD FEATURE STRIP (BELI FITUR, DOUBLE CHANCE, TURBO) ── */
+.game-feature-cloud-strip {
+  width: 100%;
+  max-width: 410px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 8px;
+  margin: 0 auto;
+  padding: 0 4px;
+  box-sizing: border-box;
+}
+
+.btn-cloud-feature {
+  position: relative;
+  background: linear-gradient(180deg, rgba(35, 14, 58, 0.94) 0%, rgba(16, 6, 28, 0.98) 100%);
+  border-radius: 10px;
+  padding: 8px 6px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.85), 0 0 14px rgba(255, 215, 0, 0.4);
+  transition: all 0.18s ease;
+  min-height: 52px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Running Gold Shimmer Outline Beam */
+.btn-cloud-feature::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    transparent 0deg,
+    rgba(255, 215, 0, 0.9) 30deg,
+    rgba(255, 240, 168, 1) 45deg,
+    rgba(255, 215, 0, 0.9) 60deg,
+    transparent 90deg,
+    transparent 180deg,
+    rgba(255, 215, 0, 0.7) 210deg,
+    rgba(255, 240, 168, 1) 225deg,
+    rgba(255, 215, 0, 0.7) 240deg,
+    transparent 270deg
+  );
+  animation: goldBorderFlow 4s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 1;
+}
+
+.btn-cloud-feature::after {
+  content: '';
+  position: absolute;
+  inset: 2.5px;
+  background: linear-gradient(180deg, rgba(30, 12, 50, 0.98) 0%, rgba(14, 5, 24, 0.99) 100%);
+  border-radius: 8px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.btn-cloud-feature.btn-cloud-buy::after {
+  background: linear-gradient(180deg, rgba(55, 26, 6, 0.98) 0%, rgba(28, 12, 3, 0.99) 100%);
+}
+
+.btn-cloud-feature.btn-cloud-dc.active::after {
+  background: linear-gradient(180deg, rgba(4, 90, 60, 0.98) 0%, rgba(2, 50, 35, 0.99) 100%);
+}
+
+.btn-cloud-feature.btn-cloud-turbo.active::after {
+  background: linear-gradient(180deg, rgba(140, 70, 5, 0.98) 0%, rgba(80, 35, 2, 0.99) 100%);
+}
+
+.btn-cloud-feature > * {
+  position: relative;
+  z-index: 2;
+}
+
+.btn-cloud-feature:active {
+  transform: scale(0.96);
+}
+
+.feat-lbl {
+  font-family: var(--font-title, 'Cinzel', serif);
+  font-size: 9.5px;
+  font-weight: 800;
+  color: #FFD700;
+  letter-spacing: 0.4px;
+}
+
+.feat-val {
+  font-size: 12px;
+  font-weight: 800;
+  color: #FFF0A8;
+  font-family: var(--font-main);
+}
+
+.feat-status {
+  font-size: 10.5px;
+  font-weight: 900;
+  color: #CBD5E1;
+  letter-spacing: 0.5px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2px 10px;
+  border-radius: 4px;
+}
+
+/* Active State for Double Chance */
+.btn-cloud-feature.btn-cloud-dc.active {
+  background: linear-gradient(180deg, #059669 0%, #047857 100%);
+  border-color: #34D399;
+  box-shadow: 0 0 12px rgba(52, 211, 153, 0.4);
+}
+
+.btn-cloud-feature.btn-cloud-dc.active .feat-status {
+  color: #FFFFFF;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+/* Active State for Turbo */
+.btn-cloud-feature.btn-cloud-turbo.active {
+  background: linear-gradient(180deg, #D97706 0%, #B45309 100%);
+  border-color: #FBBF24;
+  box-shadow: 0 0 12px rgba(251, 191, 36, 0.4);
+}
+
+.btn-cloud-feature.btn-cloud-turbo.active .feat-status {
+  color: #FFFFFF;
+  background: rgba(0, 0, 0, 0.35);
+}

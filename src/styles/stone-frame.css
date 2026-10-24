@@ -1,0 +1,430 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   SCULPTED GOLDEN GREEK TEMPLE FRAME — 5 COLUMNS x 4 ROWS (20 CELLS)
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+@property --gold-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+/* Fallback for browsers that don't support @property */
+@supports not (background: paint(houdini)) {
+  .gold-symbol-cell.winning-cell {
+    animation: winningCellFallback 1.2s linear infinite !important;
+  }
+
+  @keyframes winningCellFallback {
+    0% {
+      border-color: #FFD700;
+      box-shadow: 0 0 16px rgba(255, 215, 0, 0.75), inset 0 0 10px rgba(255, 215, 0, 0.3);
+    }
+    25% {
+      border-color: #FFF8B0;
+      box-shadow: 0 0 20px rgba(255, 248, 176, 0.85), inset 0 0 12px rgba(255, 248, 176, 0.4);
+    }
+    50% {
+      border-color: rgba(255, 215, 0, 0.5);
+      box-shadow: 0 0 12px rgba(255, 215, 0, 0.5), inset 0 0 8px rgba(255, 215, 0, 0.2);
+    }
+    75% {
+      border-color: #FFA500;
+      box-shadow: 0 0 18px rgba(255, 165, 0, 0.8), inset 0 0 10px rgba(255, 165, 0, 0.35);
+    }
+    100% {
+      border-color: #FFD700;
+      box-shadow: 0 0 16px rgba(255, 215, 0, 0.75), inset 0 0 10px rgba(255, 215, 0, 0.3);
+    }
+  }
+}
+
+#game-canvas-mount {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.gold-frame-wrapper {
+  width: 100%;
+  max-width: 410px;
+  padding: 4px 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+/* 1. Main Sculpted Golden Outer Frame */
+.olympus-gold-frame {
+  position: relative;
+  width: 100%;
+  background: radial-gradient(circle at center, #281144 0%, #140724 100%);
+  border: 4.5px solid #F1BF38;
+  outline: 1.5px solid #FFF1A8;
+  box-shadow: 
+    0 0 25px rgba(241, 191, 56, 0.5),
+    0 16px 40px rgba(0, 0, 0, 0.95),
+    inset 0 0 18px rgba(0, 0, 0, 0.9);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* 2. 4 Sudut Sayap Emas Runcing Berpahat Kuno */
+.gold-corner-wing {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  background: linear-gradient(135deg, #FFF5B8 0%, #FFD700 30%, #B8860B 75%, #FFE070 100%);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.gold-corner-wing.top-left {
+  top: -8px;
+  left: -8px;
+  clip-path: polygon(0 0, 100% 0, 100% 30%, 30% 30%, 30% 100%, 0 100%, 0 0, 50% 0, 0 50%);
+  filter: drop-shadow(-3px -3px 4px rgba(0, 0, 0, 0.9));
+}
+
+.gold-corner-wing.top-right {
+  top: -8px;
+  right: -8px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 70% 100%, 70% 30%, 0 30%, 0 0, 50% 0, 100% 50%);
+  filter: drop-shadow(3px -3px 4px rgba(0, 0, 0, 0.9));
+}
+
+.gold-corner-wing.bottom-left {
+  bottom: -8px;
+  left: -8px;
+  clip-path: polygon(0 0, 30% 0, 30% 70%, 100% 70%, 100% 100%, 0 100%, 0 0, 0 50%, 50% 100%);
+  filter: drop-shadow(-3px 3px 4px rgba(0, 0, 0, 0.9));
+}
+
+.gold-corner-wing.bottom-right {
+  bottom: -8px;
+  right: -8px;
+  clip-path: polygon(70% 0, 100% 0, 100% 100%, 0 100%, 0 70%, 70% 70%, 70% 0, 100% 50%, 50% 100%);
+  filter: drop-shadow(3px 3px 4px rgba(0, 0, 0, 0.9));
+}
+
+/* 3. Pelat Kaca Ungu Solid dengan 5 Kolom Reel (5 Columns) */
+.gold-matrix-canvas {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  width: 100%;
+  background: transparent;
+}
+
+.gold-reel-col {
+  display: flex;
+  flex-direction: column;
+  border-right: 1.5px solid rgba(255, 215, 0, 0.25);
+  position: relative;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.gold-reel-col:last-child {
+  border-right: none;
+}
+
+/* ── ANIMASI SCROLL REEL VERTIKAL (ORIGINAL) ── */
+.gold-reel-col.spinning {
+  animation: reelVerticalScroll 0.1s infinite linear;
+  filter: blur(1.5px);
+}
+
+.gold-reel-col.spinning .gold-symbol-cell {
+  animation: cellSpinBlur 0.1s infinite linear;
+}
+
+@keyframes reelVerticalScroll {
+  0% { transform: translateY(-25%); }
+  100% { transform: translateY(25%); }
+}
+
+@keyframes cellSpinBlur {
+  0% { transform: translateY(-10px); opacity: 0.8; }
+  50% { transform: translateY(0px); opacity: 1; }
+  100% { transform: translateY(10px); opacity: 0.8; }
+}
+
+/* ── HENTAKAN PENDARATAN REEL (ORIGINAL) ── */
+.gold-reel-col.landing-vfx {
+  animation: reelSlamImpact 0.26s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes reelSlamImpact {
+  0% { transform: translateY(-18px) scaleY(1.04); }
+  55% { transform: translateY(4px) scaleY(0.97); }
+  85% { transform: translateY(-1px) scaleY(1.01); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* ── 4. INDIVIDUAL SYMBOL CELL (5x4 PROPORTIONAL FIT) ── */
+.gold-symbol-cell {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  margin: 2px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(42, 18, 70, 0.45) 45%, rgba(14, 5, 26, 0.75) 100%);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 6px;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.12), 0 4px 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+  position: relative;
+}
+
+/* Ikon Biasa: Bergerak Melayang Halus & Anggun */
+.gold-symbol-cell .symbol-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.85));
+  animation: idleSymbolFloat 2.6s ease-in-out infinite alternate;
+}
+
+/* Force animation reset on spin */
+.gold-reel-col.spinning .gold-symbol-cell .symbol-img {
+  animation: none !important;
+}
+
+@keyframes idleSymbolFloat {
+  0% {
+    transform: scale(0.98) translateY(0);
+  }
+  100% {
+    transform: scale(1.03) translateY(-2.5px);
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.95));
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   5. SIMBOL MENANG: LIS EMAS BERJALAN 360°
+   ══════════════════════════════════════════════════════════════════════════════ */
+.gold-symbol-cell.winning-cell {
+  z-index: 10;
+  border: 2.5px solid transparent !important;
+  border-radius: 6px !important;
+  background: 
+    linear-gradient(rgba(35, 14, 58, 0.88), rgba(16, 6, 28, 0.95)) padding-box,
+    conic-gradient(from var(--gold-angle, 0deg), #FFD700 0%, #FFF8B0 25%, rgba(255, 215, 0, 0.2) 50%, #FFA500 75%, #FFD700 100%) border-box !important;
+  box-shadow: 
+    0 0 16px rgba(255, 215, 0, 0.75),
+    inset 0 0 10px rgba(255, 215, 0, 0.3) !important;
+  animation: rotateGoldRunningOutline 1.2s linear infinite !important;
+}
+
+/* Lis Emas Berjalan untuk Simbol Mendekati Kemenangan (Near-Win 4-5 buah / 2 Scatter) */
+.gold-symbol-cell.near-win-cell {
+  z-index: 8;
+  border: 2px solid transparent !important;
+  border-radius: 6px !important;
+  background: 
+    linear-gradient(rgba(35, 14, 58, 0.88), rgba(16, 6, 28, 0.95)) padding-box,
+    conic-gradient(from var(--gold-angle, 0deg), #FFD700 0%, #FFF8B0 25%, rgba(255, 215, 0, 0.2) 50%, #FFA500 75%, #FFD700 100%) border-box !important;
+  box-shadow: 
+    0 0 12px rgba(255, 215, 0, 0.6),
+    inset 0 0 8px rgba(255, 215, 0, 0.25) !important;
+  animation: rotateGoldRunningOutline 1.5s linear infinite !important;
+}
+
+.gold-symbol-cell.near-win-cell .symbol-img {
+  animation: nearWinSymbolPulse 1s ease-in-out infinite alternate !important;
+}
+
+@keyframes nearWinSymbolPulse {
+  0% {
+    transform: scale(1.02);
+    filter: drop-shadow(0 0 6px #FFA500);
+  }
+  100% {
+    transform: scale(1.10);
+    filter: drop-shadow(0 0 14px #FFD700);
+  }
+}
+
+@keyframes rotateGoldRunningOutline {
+  to {
+    --gold-angle: 360deg;
+  }
+}
+
+.gold-symbol-cell.winning-cell .symbol-img {
+  animation: winningSymbolDynamicGlow 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite alternate !important;
+}
+
+@keyframes winningSymbolDynamicGlow {
+  0% {
+    transform: scale(1.04);
+    filter: drop-shadow(0 0 8px #FFA500) brightness(1.18);
+  }
+  100% {
+    transform: scale(1.18);
+    filter: drop-shadow(0 0 20px #FFD700) brightness(1.36);
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   6. TUMBLE CASCADE: PECAH (SHATTER) & JATUH RUNTUH (DROP IN)
+   ══════════════════════════════════════════════════════════════════════════════ */
+.gold-symbol-cell.shattering {
+  animation: cellShatterExplode 0.42s cubic-bezier(0.1, 0.9, 0.2, 1) forwards !important;
+  z-index: 50;
+}
+
+.gold-symbol-cell.shattering .symbol-img {
+  animation: symbolShatterFlash 0.42s cubic-bezier(0.1, 0.9, 0.2, 1) forwards !important;
+}
+
+@keyframes cellShatterExplode {
+  0% {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #FFD700, inset 0 0 15px #FF4500;
+    opacity: 1;
+  }
+  40% {
+    transform: scale(1.28) rotate(10deg);
+    box-shadow: 0 0 45px #FFFFFF, 0 0 70px #38BDF8;
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(0) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+@keyframes symbolShatterFlash {
+  0% {
+    transform: scale(1.1);
+    filter: brightness(2.5) drop-shadow(0 0 20px #FFD700);
+    opacity: 1;
+  }
+  45% {
+    transform: scale(1.38) rotate(-10deg);
+    filter: brightness(4.5) drop-shadow(0 0 35px #FFFFFF);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(0) rotate(55deg);
+    filter: brightness(0);
+    opacity: 0;
+  }
+}
+
+.gold-symbol-cell.tumble-drop-in {
+  animation: tumblePlungeBounce 0.45s cubic-bezier(0.2, 0.85, 0.35, 1.25) forwards !important;
+}
+
+@keyframes tumblePlungeBounce {
+  0% {
+    transform: translateY(-80px) scale(0.85);
+    opacity: 0.15;
+    filter: blur(2px);
+  }
+  65% {
+    transform: translateY(8px) scale(1.08);
+    opacity: 1;
+    filter: blur(0);
+  }
+  85% {
+    transform: translateY(-3px) scale(0.97);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    filter: none;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   7. MULTIPLIER ORB BADGE (BOLA PETIR PENGALI 2X - 500X)
+   ══════════════════════════════════════════════════════════════════════════════ */
+.multiplier-orb-badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: linear-gradient(135deg, #FF4500 0%, #FFD700 60%, #FFA500 100%);
+  color: #120324;
+  font-weight: 900;
+  font-size: 9.5px;
+  padding: 1.5px 4.5px;
+  border-radius: 8px;
+  border: 1.5px solid #FFFFFF;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.9), 0 2px 4px rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.5px;
+  z-index: 15;
+  animation: multiplierOrbPulse 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes multiplierOrbPulse {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 6px #FFA500);
+  }
+  100% {
+    transform: scale(1.12);
+    filter: drop-shadow(0 0 12px #FFD700);
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   8. PROCEDURAL LIGHTNING & SHATTER VFX LAYER
+   ══════════════════════════════════════════════════════════════════════════════ */
+.game-stage-frame-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fullscreen-lightning-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 85;
+}
+
+/* Screen Shake Effect */
+.screen-shake-intense {
+  animation: screenShakeImpact 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes screenShakeImpact {
+  10%, 90% { transform: translate3d(-3px, -4px, 0) rotate(-0.6deg); }
+  20%, 80% { transform: translate3d(4px, 3px, 0) rotate(0.8deg); }
+  30%, 50%, 70% { transform: translate3d(-5px, 5px, 0) rotate(-1deg); }
+  40%, 60% { transform: translate3d(5px, -3px, 0) rotate(0.8deg); }
+}
+
+/* Crystal Shatter Explosion Particle Elements */
+.crystal-shard-particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 999;
+  border-radius: 2px;
+  box-shadow: 0 0 12px #FFD700, 0 0 20px #38BDF8;
+  animation: shardExplosion 0.55s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+}
+
+@keyframes shardExplosion {
+  0% {
+    transform: translate(0, 0) scale(1.4) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty)) scale(0) rotate(var(--rot));
+    opacity: 0;
+  }
+}

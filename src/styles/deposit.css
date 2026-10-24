@@ -1,0 +1,281 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   deposit.css — Comprehensive Wallet, Deposit, Withdraw & History Page Styles
+   FokusKonten Pro — AntiRungkad Ecosystem
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+@import "./shared-page.css";
+
+/* Big Gold Balance Card */
+.wallet-hero-card {
+  background: linear-gradient(180deg, rgba(42, 18, 70, 0.96) 0%, rgba(18, 6, 32, 0.99) 100%);
+  border: 2px solid rgba(255, 215, 0, 0.55);
+  border-radius: 16px;
+  padding: 16px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+.wallet-balance-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.wallet-bal-label {
+  font-family: var(--font-title, 'Cinzel', serif);
+  font-size: 10px;
+  font-weight: 700;
+  color: #D4AF37;
+  letter-spacing: 0.8px;
+}
+
+.wallet-bal-val-group {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.wallet-bal-curr {
+  font-size: 13px;
+  font-weight: 700;
+  color: #FFF0A8;
+}
+
+.wallet-bal-val {
+  font-size: 24px;
+  font-weight: 900;
+  color: #FFFFFF;
+  font-family: var(--font-main);
+  letter-spacing: 0.5px;
+}
+
+/* 4 Quick Nominal Chips */
+.deposit-chips-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.deposit-chip-btn {
+  position: relative;
+  background: linear-gradient(180deg, rgba(38, 16, 64, 0.95) 0%, rgba(18, 7, 32, 0.98) 100%);
+  border: 1.5px solid rgba(255, 215, 0, 0.4);
+  border-radius: 12px;
+  padding: 12px 8px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  transition: all 0.18s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.deposit-chip-btn.active, .deposit-chip-btn:hover {
+  border-color: #FFD700;
+  box-shadow: 0 0 14px rgba(255, 215, 0, 0.45);
+}
+
+.deposit-chip-btn:active {
+  transform: scale(0.96);
+}
+
+.deposit-chip-btn.gold-vip {
+  background: linear-gradient(180deg, rgba(70, 40, 10, 0.95) 0%, rgba(30, 15, 4, 0.98) 100%);
+  border-color: #FFD700;
+}
+
+.chip-currency {
+  font-size: 10px;
+  color: #D4AF37;
+  font-weight: 700;
+}
+
+.chip-amount {
+  font-size: 16px;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.vip-ribbon {
+  position: absolute;
+  top: -7px;
+  right: -5px;
+  background: linear-gradient(90deg, #F59E0B, #D97706);
+  color: #FFFFFF;
+  font-size: 8.5px;
+  font-weight: 900;
+  padding: 2px 6px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Payment Method Cards */
+.payment-methods-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.method-card {
+  background: rgba(10, 4, 18, 0.85);
+  border: 1.5px solid rgba(255, 215, 0, 0.3);
+  border-radius: 10px;
+  padding: 10px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.method-card.active {
+  border-color: #FFD700;
+  background: rgba(45, 20, 75, 0.9);
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.35);
+}
+
+.method-icon {
+  font-size: 18px;
+}
+
+.method-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #FFF0A8;
+}
+
+/* Transaction History List */
+.history-filter-bar {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.btn-filter-pill {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 16px;
+  padding: 5px 12px;
+  color: #94A3B8;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.18s ease;
+}
+
+.btn-filter-pill.active {
+  background: #FFD700;
+  color: #1A0B2E;
+  border-color: #FFD700;
+  font-weight: 900;
+}
+
+.trx-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.trx-item-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(10, 4, 18, 0.85);
+  border: 1px solid rgba(255, 215, 0, 0.25);
+  border-radius: 10px;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+.trx-item-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.trx-type-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.trx-type-icon.deposit {
+  background: rgba(16, 185, 129, 0.2);
+  color: #10B981;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.trx-type-icon.withdraw {
+  background: rgba(239, 68, 68, 0.2);
+  color: #EF4444;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.trx-type-icon.win {
+  background: rgba(245, 158, 11, 0.2);
+  color: #F59E0B;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+.trx-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.trx-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.trx-date {
+  font-size: 10px;
+  color: #94A3B8;
+}
+
+.trx-item-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.trx-amount {
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.trx-amount.positive {
+  color: #10B981;
+}
+
+.trx-amount.negative {
+  color: #EF4444;
+}
+
+.trx-status-tag {
+  font-size: 9px;
+  font-weight: 800;
+  color: #10B981;
+  background: rgba(16, 185, 129, 0.15);
+  padding: 1px 6px;
+  border-radius: 4px;
+}

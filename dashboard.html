@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#06070A">
+  <title>Dashboard — AntiRungkad Arcade</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./src/styles/dashboard.css">
+</head>
+<body class="dashboard-canvas">
+  <!-- Background Image Layer -->
+  <div class="dashboard-bg"></div>
+
+  <!-- Floating Gold Dust & Silver Sparkle Particle Canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Top Olympus HUD Scoreboard (Fixed Position) -->
+  <header class="olympus-hud-header">
+    <!-- 1. Saldo / Balance -->
+    <div class="hud-card hud-balance">
+      <span class="hud-label">SALDO</span>
+      <div class="hud-val-group">
+        <span class="hud-currency">Rp</span>
+        <span class="hud-value" id="hud-val-balance">1.000.000</span>
+      </div>
+    </div>
+
+    <!-- 2. Kemenangan / Win Score Counter (Tengah) -->
+    <div class="hud-card hud-win-score">
+      <div class="hud-win-badge">MENANG</div>
+      <div class="hud-val-group">
+        <span class="hud-currency">Rp</span>
+        <span class="hud-value" id="hud-val-win">0</span>
+      </div>
+      <div class="hud-multiplier-pill" id="hud-val-multiplier">1X</div>
+    </div>
+
+    <!-- 3. Taruhan / Bet Level -->
+    <div class="hud-card hud-bet">
+      <span class="hud-label">TARUHAN</span>
+      <div class="hud-bet-control">
+        <button type="button" class="hud-bet-btn" id="btn-bet-minus">−</button>
+        <span class="hud-value" id="hud-val-bet">5.000</span>
+        <button type="button" class="hud-bet-btn" id="btn-bet-plus">+</button>
+      </div>
+    </div>
+  </header>
+
+  <div id="dashboard-root">
+    <!-- Main Central Game Stage (Centered Harmoniously) -->
+    <div class="slot-stage-arena">
+      <!-- 3-Button Control Strip (BELI FITUR, DOUBLE CHANCE, TURBO) -->
+      <div class="slot-feature-strip">
+        <!-- 1. Beli Fitur -->
+        <button type="button" class="btn-strip-card btn-strip-buy" id="btn-buy-spin">
+          <span class="strip-label">⚡ BELI FITUR</span>
+          <span class="strip-val" id="feat-val-buy">Rp 500.000</span>
+        </button>
+
+        <!-- 2. Double Chance -->
+        <button type="button" class="btn-strip-card btn-strip-dc" id="btn-dc-toggle">
+          <span class="strip-label">🎯 D. CHANCE</span>
+          <span class="strip-status" id="feat-status-dc">OFF</span>
+        </button>
+
+        <!-- 3. Turbo Spin -->
+        <button type="button" class="btn-strip-card btn-strip-turbo" id="btn-toggle-turbo">
+          <span class="strip-label">⚡ TURBO</span>
+          <span class="strip-status" id="label-turbo-status">OFF</span>
+        </button>
+      </div>
+
+      <!-- Game Canvas Viewport Mount Point -->
+      <div id="game-canvas-mount"></div>
+    </div>
+
+    <!-- 5-CTA Bottom Docked Navigation (with Center Spin Button) -->
+    <nav class="bottom-nav-dock">
+      <!-- 1. Lobby -->
+      <a href="./lobby.html" class="nav-cta-item" id="nav-btn-lobby">
+        <img src="./assets/icons/nav_lobby.png" alt="Lobby" class="nav-cta-img-icon" />
+        <span class="nav-cta-label">LOBBY</span>
+      </a>
+
+      <!-- 2. Deposit -->
+      <a href="./deposit.html" class="nav-cta-item" id="nav-btn-deposit">
+        <img src="./assets/icons/nav_deposit.png" alt="Koin Virtual" class="nav-cta-img-icon" />
+        <span class="nav-cta-label">KOIN</span>
+      </a>
+
+      <!-- 3. Center Elevated Spin Button -->
+      <button type="button" class="nav-cta-item center-spin-btn active" data-tab="spin" id="nav-btn-spin">
+        <img src="./assets/icons/nav_spin.png" alt="Spin" class="center-spin-img" />
+        <span class="center-spin-label">SPIN</span>
+      </button>
+
+      <!-- 4. Promo -->
+      <a href="./promo.html" class="nav-cta-item" id="nav-btn-promo">
+        <img src="./assets/icons/nav_promo.png" alt="Promo" class="nav-cta-img-icon" />
+        <span class="nav-cta-label">PROMO</span>
+      </a>
+
+      <!-- 5. Akun -->
+      <a href="./account.html" class="nav-cta-item" id="nav-btn-account">
+        <img src="./assets/icons/nav_account.png" alt="Akun" class="nav-cta-img-avatar" />
+        <span class="nav-cta-label">AKUN</span>
+      </a>
+    </nav>
+  </div>
+
+  <script type="module" src="./src/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   account-dialog.css — Modular Golden Account Profile & Wallet Dialog Styling
+   FokusKonten Pro — AntiRungkad Ecosystem (Clean Architecture)
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+.account-modal-box {
+  position: relative;
+  width: 100%;
+  max-width: 410px;
+  background: linear-gradient(180deg, rgba(35, 14, 58, 0.98) 0%, rgba(14, 5, 25, 0.99) 100%);
+  border: 1.5px solid rgba(255, 215, 0, 0.6);
+  border-radius: 16px;
+  box-shadow:
+    0 12px 36px rgba(0, 0, 0, 0.9),
+    0 0 25px rgba(255, 215, 0, 0.25),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2);
+  padding: 22px 18px;
+  text-align: center;
+  box-sizing: border-box;
+  animation: olympusModalIn 0.32s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.account-profile-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(10, 4, 18, 0.7);
+  border: 1px solid rgba(255, 215, 0, 0.35);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  text-align: left;
+}
+
+.account-avatar-wrapper {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid #FFD700;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
+  background: radial-gradient(circle, #3d1b64 0%, #150726 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.account-avatar-img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+.account-info-meta {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.account-username {
+  font-family: var(--font-title, 'Cinzel', serif);
+  font-size: 15px;
+  font-weight: 800;
+  color: #FFF8B0;
+  letter-spacing: 0.5px;
+}
+
+.account-id-tag {
+  font-size: 11px;
+  color: #94A3B8;
+}
+
+.account-vip-badge {
+  align-self: flex-start;
+  margin-top: 3px;
+  background: linear-gradient(90deg, #F59E0B, #D97706);
+  color: #FFFFFF;
+  font-size: 9px;
+  font-weight: 900;
+  padding: 2px 7px;
+  border-radius: 6px;
+  letter-spacing: 0.6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Balance Overview Card */
+.account-balance-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(180deg, rgba(42, 18, 70, 0.95) 0%, rgba(20, 8, 35, 0.98) 100%);
+  border: 1.5px solid rgba(255, 215, 0, 0.45);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+}
+
+.account-bal-label-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.acc-bal-title {
+  font-family: var(--font-title, 'Cinzel', serif);
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #D4AF37;
+  letter-spacing: 0.6px;
+}
+
+.acc-bal-val {
+  font-size: 18px;
+  font-weight: 800;
+  color: #FFFFFF;
+  font-family: var(--font-main, 'Outfit', sans-serif);
+}
+
+.btn-acc-topup {
+  background: linear-gradient(180deg, #FDE047 0%, #EAB308 50%, #CA8A04 100%);
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  color: #1A0B2E;
+  font-family: var(--font-main, 'Outfit', sans-serif);
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(234, 179, 8, 0.45);
+  transition: all 0.18s ease;
+}
+
+.btn-acc-topup:active {
+  transform: scale(0.95);
+}
+
+/* Account Navigation Action Buttons */
+.account-actions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.acc-action-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(18, 7, 32, 0.75);
+  border: 1px solid rgba(255, 215, 0, 0.25);
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: #F8FAFC;
+  font-family: var(--font-main, 'Outfit', sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.acc-action-item:hover {
+  background: rgba(42, 18, 70, 0.9);
+  border-color: #FFD700;
+}
+
+.acc-action-item:active {
+  transform: scale(0.98);
+}
+
+.acc-action-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.acc-action-icon {
+  font-size: 16px;
+}
+
+.acc-arrow {
+  color: #D4AF37;
+  font-weight: 800;
+}
+
+/* Logout Button */
+.btn-logout {
+  width: 100%;
+  background: linear-gradient(180deg, #991B1B 0%, #7F1D1D 100%);
+  border: 1px solid rgba(239, 68, 68, 0.5);
+  border-radius: 10px;
+  padding: 11px 0;
+  color: #FFFFFF;
+  font-family: var(--font-main, 'Outfit', sans-serif);
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease;
+}
+
+.btn-logout:active {
+  transform: scale(0.97);
+  background: #B91C1C;
+}

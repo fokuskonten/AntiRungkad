@@ -1,0 +1,17 @@
+﻿{
+  "name": "AntiRungkad Arcade Simulator",
+  "short_name": "AntiRungkad",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#08090C",
+  "theme_color": "#08090C",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./assets/hero_banner.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

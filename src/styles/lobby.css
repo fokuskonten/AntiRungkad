@@ -1,0 +1,357 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   lobby.css — Main Game Lobby, Sportsbook & News Portal Page Styles
+   FokusKonten Pro — AntiRungkad Ecosystem
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+@import "./shared-page.css";
+
+/* Lobby Top Brand Bar */
+.lobby-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(180deg, rgba(35, 14, 58, 0.95) 0%, rgba(16, 6, 28, 0.99) 100%);
+  border: 1.5px solid rgba(255, 215, 0, 0.45);
+  border-radius: 14px;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.7);
+}
+
+.lobby-brand-title {
+  font-family: var(--font-title, 'Cinzel', serif);
+  font-size: 16px;
+  font-weight: 900;
+  background: linear-gradient(180deg, #FFF8B0 0%, #FFD700 50%, #D4AF37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.5px;
+}
+
+.lobby-user-quick-bal {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-global-bgm-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 215, 0, 0.12);
+  border: 1px solid rgba(255, 215, 0, 0.45);
+  color: #FFF0A8;
+  padding: 4px 9px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+}
+
+.btn-global-bgm-toggle:hover {
+  background: rgba(255, 215, 0, 0.25);
+  border-color: #FFD700;
+  transform: scale(1.04);
+}
+
+.btn-global-bgm-toggle.playing {
+  background: rgba(255, 69, 0, 0.2);
+  border-color: #FF4500;
+  color: #FFA500;
+  box-shadow: 0 0 12px rgba(255, 69, 0, 0.4);
+}
+
+.quick-bal-badge {
+  background: rgba(10, 4, 18, 0.85);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  border-radius: 8px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+}
+
+.quick-bal-curr {
+  font-size: 10px;
+  color: #D4AF37;
+  font-weight: 700;
+}
+
+.quick-bal-val {
+  font-size: 13px;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+/* Running Ticker */
+.lobby-running-ticker {
+  background: rgba(4, 2, 8, 0.85);
+  border: 1px solid rgba(255, 215, 0, 0.25);
+  border-radius: 8px;
+  padding: 6px 10px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+  font-size: 11px;
+}
+
+.ticker-icon-badge {
+  color: #FFD700;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.ticker-marquee {
+  white-space: nowrap;
+  animation: marqueeRoll 25s linear infinite;
+  color: #CBD5E1;
+}
+
+@keyframes marqueeRoll {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Hero Banner Slider */
+.lobby-hero-slider {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1.5px solid rgba(255, 215, 0, 0.4);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  margin-bottom: 16px;
+  height: 140px;
+}
+
+.slider-slide-item {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  box-sizing: border-box;
+  background-size: cover;
+  background-position: center;
+}
+
+.slide-content-overlay {
+  position: relative;
+  z-index: 2;
+  text-align: left;
+  max-width: 70%;
+}
+
+.slide-tag {
+  background: linear-gradient(90deg, #F59E0B, #D97706);
+  color: #FFFFFF;
+  font-size: 8.5px;
+  font-weight: 900;
+  padding: 2px 6px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+.slide-heading {
+  font-family: var(--font-title, 'Cinzel', serif);
+  font-size: 16px;
+  font-weight: 900;
+  color: #FFF8B0;
+  margin: 0 0 6px 0;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+}
+
+.btn-slide-action {
+  display: inline-block;
+  background: linear-gradient(180deg, #FDE047 0%, #EAB308 50%, #CA8A04 100%);
+  color: #1A0B2E;
+  font-size: 11px;
+  font-weight: 900;
+  padding: 5px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* Game Catalog Grid */
+.game-catalog-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.game-item-card {
+  position: relative;
+  background: linear-gradient(180deg, rgba(38, 14, 60, 0.95) 0%, rgba(18, 6, 30, 0.98) 100%);
+  border: 1.5px solid rgba(255, 215, 0, 0.35);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.game-item-card:hover {
+  border-color: #FFD700;
+  box-shadow: 0 0 16px rgba(255, 215, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+.game-item-card.featured-main {
+  grid-column: span 2;
+  border-color: #FFD700;
+  box-shadow: 0 0 18px rgba(255, 215, 0, 0.35);
+  flex-direction: row;
+  align-items: center;
+}
+
+.game-thumb-box {
+  position: relative;
+  height: 95px;
+  background: radial-gradient(circle, #4c1d95 0%, #150726 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.game-item-card.featured-main .game-thumb-box {
+  width: 120px;
+  height: 100px;
+  flex-shrink: 0;
+}
+
+.game-icon-large {
+  font-size: 40px;
+  filter: drop-shadow(0 4px 8px rgba(255, 215, 0, 0.5));
+}
+
+.game-hot-badge {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  background: linear-gradient(90deg, #EF4444, #DC2626);
+  color: #FFFFFF;
+  font-size: 8px;
+  font-weight: 900;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.game-meta-box {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-align: left;
+  flex: 1;
+}
+
+.game-name-title {
+  font-family: var(--font-title, 'Cinzel', serif);
+  font-size: 13px;
+  font-weight: 800;
+  color: #FFF8B0;
+}
+
+.game-provider-tag {
+  font-size: 10px;
+  color: #94A3B8;
+}
+
+.btn-play-game {
+  margin-top: 6px;
+  background: linear-gradient(180deg, #FDE047 0%, #EAB308 50%, #CA8A04 100%);
+  color: #1A0B2E;
+  font-size: 11px;
+  font-weight: 900;
+  padding: 6px 0;
+  border-radius: 6px;
+  text-align: center;
+  display: block;
+}
+
+/* Sportsbook Match List */
+.sports-match-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.match-item-card {
+  background: rgba(10, 4, 18, 0.85);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.match-league-tag {
+  font-size: 9.5px;
+  color: #FFD700;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.match-teams {
+  font-size: 12px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.match-score-badge {
+  background: linear-gradient(180deg, #10B981 0%, #059669 100%);
+  color: #FFFFFF;
+  font-weight: 900;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.match-time-tag {
+  font-size: 10px;
+  color: #94A3B8;
+}
+
+/* News Articles List */
+.news-list-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.news-item-card {
+  background: rgba(10, 4, 18, 0.7);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 8px;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+.news-date-text {
+  font-size: 9.5px;
+  color: #D4AF37;
+  font-weight: 700;
+}
+
+.news-headline-text {
+  font-size: 12px;
+  font-weight: 700;
+  color: #E2E8F0;
+  margin: 3px 0 0 0;
+  line-height: 1.35;
+}

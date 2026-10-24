@@ -1,0 +1,313 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   shared-page.css — Shared Luxury Layout & Olympus Theme Components
+   FokusKonten Pro — AntiRungkad Ecosystem (Strict Design Token Harmonization)
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+@import "./tokens.css";
+@import "./bottom-nav.css";
+
+body.olympus-page {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: #0d0617;
+  color: var(--text-main);
+  font-family: var(--font-main);
+  overflow-x: hidden;
+}
+
+/* Fixed Olympus Sky Background */
+body.olympus-page::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/assets/olympus_bg.jpg');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: -1;
+  opacity: 0.45;
+}
+
+/* Main Mobile Viewport Container */
+.page-container {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 14px 92px 14px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── TOP HEADER WITH BACK BUTTON & TITLE ── */
+.page-top-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(180deg, rgba(35, 14, 58, 0.94) 0%, rgba(16, 6, 28, 0.98) 100%);
+  border: 1.5px solid rgba(255, 215, 0, 0.45);
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+}
+
+.btn-header-back {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  color: #FFF0A8;
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.18s ease;
+}
+
+.btn-header-back:active {
+  transform: scale(0.95);
+  background: rgba(255, 215, 0, 0.2);
+}
+
+.page-header-title {
+  font-family: var(--font-title, 'Cinzel', serif);
+  font-size: 15px;
+  font-weight: 800;
+  margin: 0;
+  background: linear-gradient(180deg, #FFF8B0 0%, #FFD700 50%, #D4AF37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.header-right-chip {
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 10px;
+  font-weight: 800;
+  color: #FFD700;
+  letter-spacing: 0.4px;
+}
+
+.btn-global-bgm-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 215, 0, 0.12);
+  border: 1px solid rgba(255, 215, 0, 0.45);
+  color: #FFF0A8;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+}
+
+.btn-global-bgm-toggle:hover {
+  background: rgba(255, 215, 0, 0.25);
+  border-color: #FFD700;
+  transform: scale(1.04);
+}
+
+.btn-global-bgm-toggle.playing {
+  background: rgba(255, 69, 0, 0.22);
+  border-color: #FF4500;
+  color: #FFA500;
+  box-shadow: 0 0 12px rgba(255, 69, 0, 0.45);
+}
+
+/* ── OLYMPUS CARD SECTIONS ── */
+.olympus-card {
+  background: linear-gradient(180deg, rgba(28, 11, 48, 0.94) 0%, rgba(14, 5, 25, 0.98) 100%);
+  border: 1.5px solid rgba(255, 215, 0, 0.4);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  box-sizing: border-box;
+}
+
+.card-section-title {
+  font-family: var(--font-title, 'Cinzel', serif);
+  font-size: 13px;
+  font-weight: 800;
+  color: #FFF0A8;
+  margin: 0 0 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+  padding-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+/* ── FORM CONTROLS & INPUTS ── */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.form-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #D4AF37;
+  letter-spacing: 0.4px;
+}
+
+.form-input {
+  background: rgba(10, 4, 18, 0.85);
+  border: 1.5px solid rgba(255, 215, 0, 0.35);
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: #FFFFFF;
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 600;
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  border-color: #FFD700;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.form-input::placeholder {
+  color: #64748B;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+/* ── GOLDEN BUTTONS ── */
+.btn-gold-primary {
+  width: 100%;
+  background: linear-gradient(180deg, #FDE047 0%, #EAB308 50%, #CA8A04 100%);
+  border: none;
+  border-radius: 10px;
+  padding: 12px 0;
+  color: #1A0B2E;
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(234, 179, 8, 0.45);
+  transition: all 0.18s ease;
+}
+
+.btn-gold-primary:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 6px rgba(234, 179, 8, 0.3);
+}
+
+.btn-gold-secondary {
+  background: rgba(42, 18, 70, 0.9);
+  border: 1.5px solid rgba(255, 215, 0, 0.4);
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: #FFF0A8;
+  font-family: var(--font-main);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.btn-gold-secondary:active {
+  transform: scale(0.96);
+  border-color: #FFD700;
+}
+
+/* ── TAB SELECTOR ── */
+.olympus-tab-nav {
+  display: flex;
+  gap: 6px;
+  background: rgba(10, 4, 18, 0.7);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 10px;
+  padding: 4px;
+  margin-bottom: 14px;
+}
+
+.tab-nav-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 0;
+  color: #94A3B8;
+  font-family: var(--font-main);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.tab-nav-btn.active {
+  background: linear-gradient(180deg, #FDE047 0%, #EAB308 50%, #CA8A04 100%);
+  color: #1A0B2E;
+  font-weight: 900;
+  box-shadow: 0 2px 8px rgba(234, 179, 8, 0.35);
+}
+
+/* ── TOAST NOTIFICATION POPUP ── */
+#olympus-toast {
+  position: fixed;
+  bottom: 84px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: linear-gradient(180deg, #1d0f2f 0%, #0d0617 100%);
+  border: 1.5px solid #FFD700;
+  color: #FFFFFF;
+  font-family: var(--font-main);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8), 0 0 15px rgba(255, 215, 0, 0.35);
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  pointer-events: none;
+  text-align: center;
+  max-width: 90vw;
+}
+
+#olympus-toast.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}

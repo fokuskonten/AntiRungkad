@@ -1,0 +1,30 @@
+﻿/* ── DESIGN TOKENS & GLOBAL COLOR SYSTEM ── */
+:root {
+  --gold-primary: #FFD700;
+  --gold-light: #FFF0A8;
+  --gold-dark: #D4AF37;
+  --gold-glow: rgba(255, 215, 0, 0.6);
+  --obsidian-dark: #06070A;
+  --obsidian-card: #0E131E;
+  --stone-border: #323C50;
+  --emerald-green: #10B981;
+  --ruby-red: #EF4444;
+  --text-main: #F8FAFC;
+  --text-muted: #94A3B8;
+  --font-main: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-title: 'Cinzel', serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--text-main);
+  background-color: var(--obsidian-dark);
+  overflow-x: hidden;
+}

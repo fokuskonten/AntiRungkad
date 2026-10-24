@@ -1,0 +1,154 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   promo.css — Promos, Bonuses & VIP Rewards Page Styles
+   FokusKonten Pro — AntiRungkad Ecosystem
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+@import "./shared-page.css";
+
+.promo-category-bar {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 14px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.promo-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.promo-card {
+  position: relative;
+  background: linear-gradient(180deg, rgba(35, 14, 58, 0.96) 0%, rgba(16, 6, 28, 0.99) 100%);
+  border: 1.5px solid rgba(255, 215, 0, 0.45);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.promo-card:hover {
+  border-color: #FFD700;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.promo-banner-art {
+  height: 110px;
+  background: linear-gradient(135deg, #4c1d95 0%, #1e1b4b 100%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+.promo-banner-art::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at right, rgba(255, 215, 0, 0.3) 0%, transparent 60%);
+}
+
+.promo-badge-tag {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  background: linear-gradient(90deg, #F59E0B, #D97706);
+  color: #FFFFFF;
+  font-size: 9px;
+  font-weight: 900;
+  padding: 3px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+.promo-art-title {
+  font-family: var(--font-title, 'Cinzel', serif);
+  font-size: 18px;
+  font-weight: 900;
+  color: #FFF8B0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+  max-width: 65%;
+  z-index: 2;
+}
+
+.promo-art-icon {
+  font-size: 42px;
+  filter: drop-shadow(0 4px 10px rgba(255, 215, 0, 0.5));
+  z-index: 2;
+}
+
+.promo-content-body {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.promo-desc-text {
+  font-size: 12px;
+  color: #C4B5FD;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.promo-terms-box {
+  background: rgba(10, 4, 18, 0.7);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 10.5px;
+  color: #94A3B8;
+  display: flex;
+  justify-content: space-between;
+}
+
+.promo-action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.promo-reward-tag {
+  font-size: 14px;
+  font-weight: 800;
+  color: #FFD700;
+  letter-spacing: 0.4px;
+}
+
+.btn-claim-promo {
+  background: linear-gradient(180deg, #FDE047 0%, #EAB308 50%, #CA8A04 100%);
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  color: #1A0B2E;
+  font-family: var(--font-main);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(234, 179, 8, 0.4);
+  transition: all 0.18s ease;
+}
+
+.btn-claim-promo:active {
+  transform: scale(0.95);
+}
+
+.btn-claim-promo.claimed {
+  background: rgba(255, 255, 255, 0.1);
+  color: #94A3B8;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: none;
+  cursor: not-allowed;
+}
