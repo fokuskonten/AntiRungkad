@@ -144,6 +144,22 @@ class StandaloneGameApp {
 
     // Global BGM seamlessly handles cross-page persistent state
     globalBgm.attachUiListeners();
+
+    // Pastikan video live background berputar lancar di peramban seluler
+    const videoBg = document.querySelector('.game-video-bg-stream');
+    if (videoBg) {
+      videoBg.muted = true;
+      videoBg.setAttribute('playsinline', '');
+      videoBg.play().catch(() => {});
+      const forcePlay = () => {
+        videoBg.play().catch(() => {});
+        window.removeEventListener('touchstart', forcePlay);
+        window.removeEventListener('click', forcePlay);
+      };
+      window.addEventListener('touchstart', forcePlay, { once: true, passive: true });
+      window.addEventListener('click', forcePlay, { once: true, passive: true });
+    }
+
     console.log('[StandaloneGameApp] Game initialized successfully with 100% preserved logic');
   }
 }

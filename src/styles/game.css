@@ -11,7 +11,7 @@ body.game-page-canvas {
   padding: 0;
   min-height: 100vh;
   min-height: 100dvh;
-  background-color: #120d18;
+  background-color: transparent;
   color: var(--text-main);
   font-family: var(--font-main);
   overflow-x: hidden;
@@ -25,12 +25,10 @@ body.game-page-canvas {
   width: 100vw;
   height: 100vh;
   height: 100dvh;
-  z-index: -2;
+  z-index: -1;
   overflow: hidden;
   pointer-events: none;
   background-color: #0b0614;
-  transform: translateZ(0);
-  will-change: transform;
 }
 
 .game-video-bg-stream {
@@ -40,8 +38,7 @@ body.game-page-canvas {
   object-position: center center;
   pointer-events: none;
   opacity: 1;
-  transform: translateZ(0);
-  backface-visibility: hidden;
+  display: block;
 }
 
 #particles-canvas {

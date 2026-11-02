@@ -118,6 +118,7 @@
   grid-template-columns: repeat(5, 1fr);
   width: 100%;
   background: transparent;
+  overflow: hidden;
 }
 
 .gold-reel-col {
@@ -125,50 +126,36 @@
   flex-direction: column;
   border-right: 1.5px solid rgba(255, 215, 0, 0.25);
   position: relative;
-  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
 }
 
 .gold-reel-col:last-child {
   border-right: none;
 }
 
-/* ── ANIMASI SCROLL REEL VERTIKAL (HARDWARE-ACCELERATED ZERO-LAG) ── */
-.gold-reel-col {
-  will-change: transform;
-  transform: translateZ(0);
-}
-
+/* ── ANIMASI SCROLL REEL VERTIKAL (HARDWARE-ACCELERATED ULTRA SMOOTH) ── */
 .gold-reel-col.spinning {
-  animation: reelVerticalScroll 0.1s infinite linear;
+  transition: none !important;
+  animation: smoothReelSpin 0.14s infinite linear;
   opacity: 0.88;
 }
 
-.gold-reel-col.spinning .gold-symbol-cell {
-  animation: cellSpinBlur 0.1s infinite linear;
-  will-change: transform;
+@keyframes smoothReelSpin {
+  0% { transform: translate3d(0, -24px, 0); }
+  100% { transform: translate3d(0, 24px, 0); }
 }
 
-@keyframes reelVerticalScroll {
-  0% { transform: translateY(-25%) translateZ(0); }
-  100% { transform: translateY(25%) translateZ(0); }
-}
-
-@keyframes cellSpinBlur {
-  0% { transform: translateY(-10px) translateZ(0); opacity: 0.8; }
-  50% { transform: translateY(0px) translateZ(0); opacity: 1; }
-  100% { transform: translateY(10px) translateZ(0); opacity: 0.8; }
-}
-
-/* ── HENTAKAN PENDARATAN REEL (ORIGINAL) ── */
+/* ── HENTAKAN PENDARATAN REEL (PRECISE CADENCE IMPACT) ── */
 .gold-reel-col.landing-vfx {
-  animation: reelSlamImpact 0.26s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  transition: none !important;
+  animation: reelSlamImpact 0.22s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 @keyframes reelSlamImpact {
-  0% { transform: translateY(-18px) scaleY(1.04); }
-  55% { transform: translateY(4px) scaleY(0.97); }
-  85% { transform: translateY(-1px) scaleY(1.01); }
-  100% { transform: translateY(0) scale(1); }
+  0% { transform: translate3d(0, -14px, 0); }
+  60% { transform: translate3d(0, 3px, 0); }
+  100% { transform: translate3d(0, 0, 0); }
 }
 
 /* ── 4. INDIVIDUAL SYMBOL CELL (5x4 PROPORTIONAL FIT) ── */

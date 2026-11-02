@@ -11,7 +11,42 @@ export class SlotView {
     this.container = document.getElementById(containerId);
     this.viewModel = viewModel;
     this.initViewStructure();
+    this.preloadSymbols();
     this.populateInitialGrid();
+  }
+
+  preloadSymbols() {
+    if (!this.viewModel || !this.viewModel.rngService || !this.viewModel.rngService.symbols) return;
+    Object.values(this.viewModel.rngService.symbols).forEach(sym => {
+      if (sym && sym.image) {
+        const img = new Image();
+        img.src = sym.image;
+      }
+    });
+  }
+
+  setCellSymbol(cell, sym) {
+    if (!cell || !sym) return;
+    let img = cell.querySelector('.symbol-img');
+    if (!img) {
+      cell.innerHTML = this.renderCellContent(sym);
+      return;
+    }
+    if (img.getAttribute('src') !== sym.image) {
+      img.src = sym.image;
+    }
+    img.alt = sym.name || 'Symbol';
+    let badge = cell.querySelector('.multiplier-orb-badge');
+    if (sym.isOrb && sym.multiplier > 1) {
+      if (!badge) {
+        badge = document.createElement('div');
+        badge.className = 'multiplier-orb-badge';
+        cell.appendChild(badge);
+      }
+      badge.textContent = `${sym.multiplier}X`;
+    } else if (badge) {
+      badge.remove();
+    }
   }
 
   initViewStructure() {
@@ -244,11 +279,11 @@ export class SlotView {
             // Immediate visual changes in same frame
             col.classList.remove('spinning');
 
-            // Pasang Simbol Hasil Putaran
+            // Pasang Simbol Hasil Putaran secara In-Place (Zero DOM destruction)
             for (let r = 0; r < GRID_ROWS; r++) {
               const cell = document.getElementById(`stone-cell-${cIdx}-${r}`);
               if (cell && initialGrid[cIdx] && initialGrid[cIdx][r]) {
-                cell.innerHTML = this.renderCellContent(initialGrid[cIdx][r]);
+                this.setCellSymbol(cell, initialGrid[cIdx][r]);
               }
             }
 
