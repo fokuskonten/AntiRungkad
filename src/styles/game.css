@@ -29,6 +29,8 @@ body.game-page-canvas {
   overflow: hidden;
   pointer-events: none;
   background-color: #0b0614;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .game-video-bg-stream {
@@ -38,6 +40,8 @@ body.game-page-canvas {
   object-position: center center;
   pointer-events: none;
   opacity: 1;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 #particles-canvas {
@@ -178,7 +182,7 @@ body.game-page-canvas {
   height: 100%;
   object-fit: cover;
   pointer-events: none;
-  filter: drop-shadow(0 0 35px rgba(255, 215, 0, 0.95)) drop-shadow(0 0 55px rgba(59, 130, 246, 0.85));
+  filter: drop-shadow(0 0 16px rgba(255, 215, 0, 0.85));
 }
 
 /* ── CLOUD FEATURE STRIP (BELI FITUR, DOUBLE CHANCE, TURBO) ── */

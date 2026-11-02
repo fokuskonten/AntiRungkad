@@ -1202,11 +1202,12 @@ body::before {
 
 .reel-col.spinning {
   animation: reelBlur 0.12s infinite linear alternate;
+  opacity: 0.88;
 }
 
 @keyframes reelBlur {
-  0% { transform: translateY(-8px); filter: blur(2px); }
-  100% { transform: translateY(8px); filter: blur(2px); }
+  0% { transform: translateY(-8px) translateZ(0); }
+  100% { transform: translateY(8px) translateZ(0); }
 }
 
 .slot-symbol {
@@ -1509,7 +1510,7 @@ body::before {
 }
 
 .slot-reel-column.spinning {
-  filter: blur(1.5px);
+  opacity: 0.88;
   animation: colSpinAnim 0.15s infinite linear;
 }
 
@@ -1832,7 +1833,7 @@ body::before {
 }
 
 .stone-reel-col.spinning {
-  filter: blur(1.5px);
+  opacity: 0.88;
   animation: colSpinAnim 0.15s infinite linear;
 }
 

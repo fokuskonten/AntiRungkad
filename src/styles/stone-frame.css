@@ -132,25 +132,31 @@
   border-right: none;
 }
 
-/* ── ANIMASI SCROLL REEL VERTIKAL (ORIGINAL) ── */
+/* ── ANIMASI SCROLL REEL VERTIKAL (HARDWARE-ACCELERATED ZERO-LAG) ── */
+.gold-reel-col {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
 .gold-reel-col.spinning {
   animation: reelVerticalScroll 0.1s infinite linear;
-  filter: blur(1.5px);
+  opacity: 0.88;
 }
 
 .gold-reel-col.spinning .gold-symbol-cell {
   animation: cellSpinBlur 0.1s infinite linear;
+  will-change: transform;
 }
 
 @keyframes reelVerticalScroll {
-  0% { transform: translateY(-25%); }
-  100% { transform: translateY(25%); }
+  0% { transform: translateY(-25%) translateZ(0); }
+  100% { transform: translateY(25%) translateZ(0); }
 }
 
 @keyframes cellSpinBlur {
-  0% { transform: translateY(-10px); opacity: 0.8; }
-  50% { transform: translateY(0px); opacity: 1; }
-  100% { transform: translateY(10px); opacity: 0.8; }
+  0% { transform: translateY(-10px) translateZ(0); opacity: 0.8; }
+  50% { transform: translateY(0px) translateZ(0); opacity: 1; }
+  100% { transform: translateY(10px) translateZ(0); opacity: 0.8; }
 }
 
 /* ── HENTAKAN PENDARATAN REEL (ORIGINAL) ── */
@@ -197,11 +203,10 @@
 
 @keyframes idleSymbolFloat {
   0% {
-    transform: scale(0.98) translateY(0);
+    transform: scale(0.98) translateY(0) translateZ(0);
   }
   100% {
-    transform: scale(1.03) translateY(-2.5px);
-    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.95));
+    transform: scale(1.02) translateY(-2.5px) translateZ(0);
   }
 }
 

@@ -9,7 +9,7 @@ import { GameController } from './engine/GameController.js';
 import { DepositDialog } from './components/DepositDialog.js';
 import { globalBgm } from './services/GlobalBgmService.js';
 
-// ── 1. FLOATING LUXURY SPARKLE PARTICLES ──────────────────────────────────────
+// ── 1. FLOATING LUXURY SPARKLE PARTICLES (HARDWARE-ACCELERATED) ──────────────
 class ParticleCanvas {
   constructor(canvasId) {
     this.canvas = document.getElementById(canvasId);
@@ -17,13 +17,20 @@ class ParticleCanvas {
     this.ctx = this.canvas.getContext('2d');
     if (!this.ctx) return;
     this.particles = [];
-    this.numParticles = 55;
+    this.isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    this.numParticles = this.isMobile ? 22 : 45;
+    this.lastFrameTime = 0;
+    this.targetInterval = this.isMobile ? 33 : 16; // 30 FPS di mobile, 60 FPS di desktop
 
     this.resize();
     this.initParticles();
-    this.animate();
+    this.animate(0);
 
-    window.addEventListener('resize', () => this.resize());
+    window.addEventListener('resize', () => {
+      this.isMobile = window.innerWidth < 768;
+      this.targetInterval = this.isMobile ? 33 : 16;
+      this.resize();
+    });
   }
 
   resize() {
@@ -47,12 +54,12 @@ class ParticleCanvas {
       this.particles.push({
         x: Math.random() * this.width,
         y: Math.random() * this.height,
-        radius: Math.random() * 2.4 + 1.0,
+        radius: Math.random() * 2.2 + 0.8,
         color: c.color,
         type: c.type,
         isStar: Math.random() > 0.65,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: -Math.random() * 0.5 - 0.2,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: -Math.random() * 0.45 - 0.15,
         baseAlpha: Math.random() * 0.5 + 0.3,
         twinkleSpeed: Math.random() * 0.04 + 0.015,
         phase: Math.random() * Math.PI * 2
@@ -69,8 +76,7 @@ class ParticleCanvas {
     this.ctx.save();
     this.ctx.globalAlpha = alpha;
     this.ctx.fillStyle = color;
-    this.ctx.shadowBlur = 10;
-    this.ctx.shadowColor = color;
+    this.ctx.globalCompositeOperation = 'lighter'; // GPU Additive Blend tanpa CPU blur
     this.ctx.beginPath();
     this.ctx.moveTo(cx, cy - outerRadius);
 
@@ -87,7 +93,13 @@ class ParticleCanvas {
     this.ctx.restore();
   }
 
-  animate() {
+  animate(currentTime) {
+    requestAnimationFrame((t) => this.animate(t));
+
+    const elapsed = currentTime - this.lastFrameTime;
+    if (elapsed < this.targetInterval) return;
+    this.lastFrameTime = currentTime - (elapsed % this.targetInterval);
+
     this.ctx.clearRect(0, 0, this.width, this.height);
 
     this.particles.forEach((p) => {
@@ -109,8 +121,7 @@ class ParticleCanvas {
       } else {
         this.ctx.save();
         this.ctx.globalAlpha = currentAlpha;
-        this.ctx.shadowBlur = 8;
-        this.ctx.shadowColor = p.color;
+        this.ctx.globalCompositeOperation = 'lighter';
         this.ctx.fillStyle = p.color;
         this.ctx.beginPath();
         this.ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
@@ -118,8 +129,6 @@ class ParticleCanvas {
         this.ctx.restore();
       }
     });
-
-    requestAnimationFrame(() => this.animate());
   }
 }
 

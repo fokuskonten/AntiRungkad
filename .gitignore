@@ -4,3 +4,5 @@ dist/
 *.local
 .env
 .env.*
+_ARSIP_SEMENTARA/
+_SIAP_HAPUS_REDUNDAN/

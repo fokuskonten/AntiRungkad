@@ -355,13 +355,14 @@ export class SlotView {
       canvas.height = h;
     }
 
-    // Trigger Violent Screen Shake
+    // Trigger Violent Screen Shake (Smooth Double-Buffer RAF)
     const stageWrapper = document.querySelector('.game-stage-frame-wrapper') || document.getElementById('game-canvas-mount');
     if (stageWrapper) {
       stageWrapper.classList.remove('screen-shake-intense');
-      void stageWrapper.offsetWidth; // force reflow
-      stageWrapper.classList.add('screen-shake-intense');
-      setTimeout(() => stageWrapper.classList.remove('screen-shake-intense'), 460);
+      requestAnimationFrame(() => {
+        stageWrapper.classList.add('screen-shake-intense');
+        setTimeout(() => stageWrapper.classList.remove('screen-shake-intense'), 460);
+      });
     }
 
     // Play Booming Zeus Thunder Audio
@@ -419,8 +420,11 @@ export class SlotView {
         ctx.save();
         ctx.strokeStyle = mainColor;
         ctx.lineWidth = width;
-        ctx.shadowColor = glowColor;
-        ctx.shadowBlur = 22;
+        ctx.globalCompositeOperation = 'lighter'; // GPU Additive Blend
+        if (w >= 768) {
+          ctx.shadowColor = glowColor;
+          ctx.shadowBlur = 14;
+        }
 
         ctx.beginPath();
         ctx.moveTo(sx, sy);
